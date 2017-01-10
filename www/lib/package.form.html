@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h3>{{ ctrl.title }}</h3></div>
+      <form ng-submit="ctrl.submitForm()" class="form">
+      <div class="panel-body">
+        
+          <div class="form-group">
+            <label for="description">Package Description</label>
+            <textarea id="description" name="body" ng-model="ctrl.formData.body" class="form-control"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="size">Package Size</label>
+            <select name="size" ng-model="ctrl.formData.size" ng-options="size as size for size in ctrl.sizes"></select>
+          </div>
+
+          <div class="form-group form-buttons">
+            <button class="btn btn-default pull-left" ng-click="ctrl.printBarcodes()" ng-if="ctrl.formData.name">Print <span class="glyphicon glyphicon-barcode" style="font-size: 1.25em;vertical-align:text-bottom;margin-left: 4px;"></span></button>
+            <button class="btn btn-danger btn-sm" ng-if="ctrl.formData.name" ng-click="ctrl.deletePackage()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+            <button submit="true" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> {{ ctrl.buttonLabel}}</button>
+          </div>
+    
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="row" ng-if="ctrl.formData.name">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <small class="pull-right" style="padding-top: 0.25em"><a class="btn-text" ng-click="ctrl.addItem()"><span class="glyphicon glyphicon-plus"></span> Add</a></small>
+        Items in {{ ctrl.title }}
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="item in ctrl.items" ng-click="ctrl.editItem(item)">{{ item.name }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="modal fade" ng-show="ctrl.showItemForm" ng-class="{ in: ctrl.showItemForm }">
+  <div class="modal-dialog">
+    <packman-item-form packman-package-name="ctrl.title" packman-item="ctrl.selectedItem" packman-item-finished="ctrl.updateItems(itemData)">
+  </div>
+</div>

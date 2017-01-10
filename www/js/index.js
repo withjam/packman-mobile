@@ -28,6 +28,7 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
+        angular.bootstrap($('body'), ['packman']);
     },
 
     // Update DOM on a Received Event
