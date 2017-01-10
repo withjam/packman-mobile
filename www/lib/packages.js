@@ -10,15 +10,17 @@
     .controller('editPackageCtrl', EditPackageCtrl);
 
 
-  function BarcodeCtrl($route,$location) {
+  function BarcodeCtrl($stateParams,$state,packmanService) {
     var ctrl = this;
-    ctrl.name = $route.current.params.packageName;
+    ctrl.name = $stateParams.packageName;
+    ctrl.root = packmanService.getApiUrl();
     ctrl.done = function() {
-      $location.path('package/' + ctrl.name);
+      $state.go('barcode', { packageName: ctrl.name });
     }
   }
 
-  function PackageSearchCtrl($http, $location) {
+  PackageSearchCtrl.$inject = ['packmanService','$location','$state','packmanService'];
+  function PackageSearchCtrl(packmanService, $location, $state, packmanService) {
     var ctrl = this, s = $location.search();
 
     ctrl.searchForm = {
@@ -26,13 +28,13 @@
     }
 
     ctrl.gotoPackage = function(p) {
-      $location.path('package/' + p.name);
+      $state.go('package', { packageName:  p.name});
     }
 
     ctrl.doSearch = function() {
       ctrl.searching = true;
       if (ctrl.searchForm.q) {
-        $http.get('/api/search/packages?q=' + ctrl.searchForm.q).then(function(resp) {
+        packmanService.get('/api/search/packages?q=' + ctrl.searchForm.q).then(function(resp) {
           ctrl.searching = false;
           console.log('search results ', resp);
           ctrl.results = resp.data.results[0];
@@ -49,7 +51,7 @@
     }
   }
 
-  function PackageListCtrl(data, $location) {
+  function PackageListCtrl(data, $state) {
     var ctrl = this;
 
     console.log('package list', data.packages);
@@ -57,11 +59,11 @@
     ctrl.list = data.packages;
     ctrl.viewPackage = function(p) {
       console.log('view package', p);
-      $location.path('/package/' + p.name);
+      $state.go('package', { packageName: p.name });
     }
   }
 
-  function AddPackageCtrl($http, $location) {
+  function AddPackageCtrl(packmanService, $state) {
     var ctrl = this;
         ctrl.sizes = ['small','medium','large','xlarge'];
 
@@ -70,14 +72,15 @@
     ctrl.formData = {};
 
     ctrl.submitForm = function() {
-      $http.post('/api/package/0', ctrl.formData).then(function(resp) {
+      console.log('posting to packmanService');
+      packmanService.post('/api/package/0', ctrl.formData).then(function(resp) {
         console.log('create package response', resp);
-        $location.path('/package/' + resp.data.packages[0].name);
+        $state.go('package', { packageName: resp.data.packages[0].name});
       });
     }
   }
 
-  function EditPackageCtrl($http, $location, data, items) {
+  function EditPackageCtrl(packmanService, $state, data, items) {
     console.log('edit package', data);
     var ctrl = this;
         ctrl.sizes = ['small','medium','large','xlarge'];
@@ -89,14 +92,14 @@
     ctrl.items = items;
 
     ctrl.printBarcodes = function() {
-      $location.path('package/' + ctrl.title + '/barcodes');
+      $state.go('barcode', { packageName: ctrl.title });
     }
 
     ctrl.deletePackage = function() {
       if ( confirm('Are you sure you want to delete ' + ctrl.title + '?')) {
-        $http.delete('/api/package/' + ctrl.title).then(function(resp) {
+        packmanService.delete('/api/package/' + ctrl.title).then(function(resp) {
           console.log('deleted', resp);
-          $location.path('/packages');
+          $state.go('packages');
         });
       };
     };

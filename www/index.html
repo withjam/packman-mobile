@@ -28,7 +28,7 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' https://packman.withjam.com data: content:; connect-src 'self' https://packman.withjam.com;">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
@@ -70,11 +70,11 @@
     </head>
     <body>
           <div class="container-fluid">
-          <ng-view></ng-view>
+          <ui-view></ui-view>
 
             <footer>
               <ul class="links footer-links list-unstyled">
-                <li><a href="home">PackMan</a></li><li><a href="search/packages"><span class="glyphicon glyphicon-search"></span></a></li><li><a href="addpackage"><span class="glyphicon glyphicon-plus"></span></a></li><li><a href="packages"><span class="glyphicon glyphicon-th-list"></span></a></li>
+                <li><a ui-sref="home">PackMan</a></li><li><a ui-sref="search"><span class="glyphicon glyphicon-search"></span></a></li><li><a ui-sref="addpackage"><span class="glyphicon glyphicon-plus"></span></a></li><li><a ui-sref="packages"><span class="glyphicon glyphicon-th-list"></span></a></li>
               </ul>
             </footer>
           </div>
@@ -84,7 +84,7 @@
         <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
         <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
         <script type="text/javascript" src="lib/app.js"></script>
-        <script type="text/javascript" src="lib/barcode.js"></script>
+        <script type="text/javascript" src="lib/service.js"></script>
         <script type="text/javascript" src="lib/items.js"></script>
         <script type="text/javascript" src="lib/packages.js"></script>
     </body>

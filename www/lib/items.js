@@ -4,7 +4,7 @@
 
   app.directive('packmanItemForm', ItemFormDirective);
 
-  function ItemFormDirective($http) {
+  function ItemFormDirective(packmanService) {
     return {
       restrict: 'E',
       replace: true,
@@ -30,7 +30,7 @@
 
         $scope.submitForm = function() {
           console.log('save the item');
-          $http.post('/api/package/' + $scope.packmanPackageName + '/item/' + $scope.formData.id, $scope.formData).then(function(resp) {
+          packmanService.post('/api/package/' + $scope.packmanPackageName + '/item/' + $scope.formData.id, $scope.formData).then(function(resp) {
             console.log('item form response', resp);
             if (resp.data.insertId) {
               $scope.formData.id = resp.data.insertId;
@@ -42,7 +42,7 @@
           })
         }
       },
-      templateUrl: 'templates/item.form.html'
+      templateUrl: 'lib/item.form.html'
     }
   }
   
