@@ -19,8 +19,21 @@
     }
 
     ctrl.launchScanner = function() {
-      ctrl.scannerActive = true;
-      startScanner();
+      cordova.plugins.barcodeScanner.scan(
+        function(result) {
+          if (!result.cancelled && result.text) {
+            ctrl.codeFound = result.text;
+            $scope.$apply();
+          }
+        },
+        function(err) {
+          alert('Scanning failed: ' + err);
+        },{
+          preferFrontCamera: false,
+          showFlipCameraButton: false,
+          prompt: "Scan the package barcode",
+          formats: 'CODE_128'
+        })
     }
 
     ctrl.endScanner = function() {

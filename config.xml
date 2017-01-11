@@ -16,7 +16,6 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <allow-navigation href="https://packman.withjam.com/*" />
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
