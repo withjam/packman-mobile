@@ -23,7 +23,7 @@
         function(result) {
           if (!result.cancelled && result.text) {
             ctrl.codeFound = result.text;
-            $scope.$apply();
+            $state.go('package',{ packageName: result.text });
           }
         },
         function(err) {
