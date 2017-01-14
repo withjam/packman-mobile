@@ -93,7 +93,8 @@
     ctrl.closeForm = true;
 
     ctrl.printBarcodes = function() {
-      $state.go('barcode', { packageName: ctrl.title });
+      cordova.plugins.printer.print(window.location.href + '/barcodes', ctrl.title + ' Barcodes');
+      //$state.go('barcode', { packageName: ctrl.title });
     }
 
     ctrl.deletePackage = function() {

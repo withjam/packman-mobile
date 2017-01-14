@@ -1,10 +1,11 @@
-<div class="row barcode-lg">
-  <div class="col-sm-12"><img ng-src="{{ctrl.root}}/barcode/{{ctrl.name}}.png"></div>
-</div>
-<div class="row barcode-md">
-  <div class="col-sm-12">
-    <img ng-src="{{ctrl.root}}/barcode/{{ctrl.name}}.png">
-    <img ng-src="{{ctrl.root}}/barcode/{{ctrl.name}}.png">
+<div id="barcodes" style="width: 100%; height: 100%">
+  <div style="width:7.5in;position: absolute; top: 0.9in; left: 0.9in"><img ng-src="{{ctrl.root}}/barcode/{{ctrl.name}}.png"></div>
+  <div style="width:7.5in;position: absolute; top: 3.9in; left: 0.9in"><img ng-src="{{ctrl.root}}/barcode/{{ctrl.name}}.png"></div>
+  <div class="smalls">
+    <div class="barcode-small"><img ng-src="{{ctrl.root}}/barcode/{{ctrl.name}}.png"></div>
+    <div class="barcode-small"><img ng-src="{{ctrl.root}}/barcode/{{ctrl.name}}.png"></div>
+    <div class="barcode-small"><img ng-src="{{ctrl.root}}/barcode/{{ctrl.name}}.png"></div>
+    <div class="barcode-small"><img ng-src="{{ctrl.root}}/barcode/{{ctrl.name}}.png"></div>
   </div>
 </div>
 <a class="barcode-done" ui-sref="package({ packageName: ctrl.name })">&laquo; Done</a>

@@ -44,22 +44,23 @@
             .modal.fade.in { display: block; }
             #quaggas-viewport { width: 320px; height: 320px; overflow: hidden; margin: auto;}
             .barcode-done { position:fixed; top: 5px; right: 15px; font-size: 2em; }
-            .barcode-lg img { width: 100%; height: auto; margin-top: 4em;}
-            .barcode-md .col-sm-12 { position: relative; }
-            .barcode-md img { 
-              width: 75%;
+            .barcodes img { width: 100%; height: auto; }
+            .barcode-small { 
+              width: 4.25in;
               position: absolute;
-              top: 18em;
-              left: 32%;
+              top: 8.275in;
+              left: -0.75in;
               -webkit-transform: rotate(90deg);
               -moz-transform: rotate(90deg);
               -o-transform: rotate(90deg);
               -ms-transform: rotate(90deg);
               transform: rotate(90deg); 
             }
+            .barcode-small:nth-child(2) { left: 1.25in; }
+            .barcode-small:nth-child(3) { left: 3.25in; }
+            .barcode-small:nth-child(4) { left: 5.25in; }
             .panel.closed .panel-body { transition: height linear 0.5s; }
             .panel.closed .panel-body { height: 0; overflow: hidden; padding: 0;}
-            .barcode-md img:first-child { left: -13%; }
             footer { width: 100%; background-color: #444; position:fixed; bottom: 0; left: 0; height: 50px; }
             footer .footer-links { width: 100%; }
             footer .footer-links li { display: inline-block; width: 21%; vertical-align: middle; text-align: center; padding-top: 8px; font-size: 18px;}
