@@ -57,6 +57,8 @@
               -ms-transform: rotate(90deg);
               transform: rotate(90deg); 
             }
+            .panel.closed .panel-body { transition: height linear 0.5s; }
+            .panel.closed .panel-body { height: 0; overflow: hidden; padding: 0;}
             .barcode-md img:first-child { left: -13%; }
             footer { width: 100%; background-color: #444; position:fixed; bottom: 0; left: 0; height: 50px; }
             footer .footer-links { width: 100%; }

@@ -90,6 +90,7 @@
     ctrl.showItems = true;
     ctrl.expandItems = true;
     ctrl.items = items;
+    ctrl.closeForm = true;
 
     ctrl.printBarcodes = function() {
       $state.go('barcode', { packageName: ctrl.title });
