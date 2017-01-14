@@ -36,6 +36,10 @@
         })
     }
 
+    ctrl.showPackage = function() {
+      $state.go('package', { packageName: ctrl.packageName });
+    }
+
     ctrl.endScanner = function() {
       ctrl.scannerActive = false;
     }
@@ -87,6 +91,8 @@
             return packmanService.get('/api/package/' + $stateParams.packageName).then(function(response) {
               //console.log('response', response.data.package);
               return response.data.package;
+            }, function() {
+              throw 'Package ' + $stateParams.packageName + ' does not exist.';
             })
           },
           items: function(packmanService, $stateParams) {

@@ -64,6 +64,8 @@
             footer .footer-links li:first-child { width: 33%; padding-top: 12px; }
             footer .footer-links li a { color: #EEE; }
             footer .footer-links li a:hover { color: #EEE; text-decoration: none;}
+            #error-div { position: fixed; opacity: 0; height: 0; top: 0; border-radius: 6px; left: 4%; width: 92%; padding: 12px; transition: all ease 0.6s; z-index: 1000; background-color: #f2dede; color: #a94442;}
+            #error-div.in { opacity: 1.0; top: 15px; height: auto;}
             @media print {
               footer,.barcode-done { display: none; }
             }
@@ -72,6 +74,7 @@
     <body>
           <div class="container-fluid">
           <ui-view></ui-view>
+          <err-msg></err-msg>
 
             <footer>
               <ul class="links footer-links list-unstyled">
@@ -85,6 +88,7 @@
         <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
         <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
         <script type="text/javascript" src="lib/app.js"></script>
+        <script type="text/javascript" src="lib/err-msg.js"></script>
         <script type="text/javascript" src="lib/service.js"></script>
         <script type="text/javascript" src="lib/items.js"></script>
         <script type="text/javascript" src="lib/packages.js"></script>

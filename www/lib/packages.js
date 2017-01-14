@@ -104,6 +104,14 @@
       };
     };
 
+    ctrl.submitForm = function() {
+      console.log('posting to packmanService');
+      packmanService.post('/api/package/'+ctrl.title, ctrl.formData).then(function(resp) {
+        console.log('update package response', resp);
+        $state.go('package', { packageName: resp.data.packages[0].name});
+      });
+    }
+
     ctrl.addItem = function() {
       ctrl.showItemForm = true;
       ctrl.selectedItem = { id: 0 };
