@@ -22,5 +22,14 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <icon src="res/ios/Icon-60@2x.png" width="120" height="120" />
+        <icon src="res/ios/Icon-60@3x.png" width="180" height="180" />
+        <icon src="res/ios/NotificationIcon@2x.png" width="40" height="40" />
+        <icon src="res/ios/Notificationicon@3x.png" width="60" height="60" />
+        <icon src="res/ios/Icon-40@2x.png" width="80" height="80" />
+        <icon src="res/ios/Icon-40@3x.png" width="120" height="120" />
+        <icon src="res/ios/Icon-Small.png" width="29" height="29" />
+        <icon src="res/ios/Icon-Small@2x.png" width="58" height="58" />
+        <icon src="res/ios/Icon-Small@3x.png" width="87" height="87" />
     </platform>
 </widget>
